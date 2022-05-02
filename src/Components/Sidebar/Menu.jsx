@@ -2,11 +2,6 @@ import React from "react";
 import "./sidebar.scss";
 
 class Menu extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         if (this.props.menu.childs !== undefined) {
             return (
@@ -17,7 +12,7 @@ class Menu extends React.Component {
                     <div className={`pl-[1rem] `}>
                         <ul className=" mt-[1rem]"  >
                             {this.props.menu.childs.map((child, childKey) => {
-                                if (child.isShowed == true) {
+                                if (child.isShowed === true) {
 
                                     return (
 
@@ -26,6 +21,8 @@ class Menu extends React.Component {
                                             <Menu menu={child} openChildMenu={this.props.openChildMenu} selectedChildMenu={this.props.selectedChildMenu} />
                                         </li>
                                     )
+                                } else {
+                                    return null
                                 }
                             })
                             }
@@ -35,7 +32,7 @@ class Menu extends React.Component {
             )
         } else {
             return (
-                <div className={`py-[0.5rem] text-[#515151] border-b-[1px] border-[#515151] ${this.props.menu.isAllowed === false ? 'cursor-not-allowed' : "cursor-pointer"} ${this.props.selectedChildMenu === this.props.menu.id ? "active" : ""} `} onClick={() => this.props.menu.isAllowed === true ? this.openMenu(this.props.menu.id) : null}>
+                <div className={`py-[0.5rem] text-[#515151] border-b-[1px] border-[#515151] ${this.props.menu.isAllowed === false ? 'cursor-not-allowed' : "cursor-pointer"} ${this.props.selectedChildMenu === this.props.menu.id ? "active" : "" }`} onClick={() => this.props.menu.isAllowed === true ? this.openMenu(this.props.menu.id) : null}>
                     {this.props.menu.id}
                 </div>
             )
