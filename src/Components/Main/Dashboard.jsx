@@ -94,61 +94,72 @@ class Dashboard extends React.Component {
                         <button className="btn bg-[#FDB817] text-white text-[16px] font-semibold px-[1.5rem] py-[.7rem] rounded-[5px]" onClick={() => this.props.handleTest(this.temporary_menu)}>Save</button>
                     </div>
                 </div>
-                <div className="container mx-auto py-[2rem]">
-                    <div className="w-10/12 lg:w-7/12 flex flex-wrap  my-[1rem] mx-[2rem] py-[1rem] px-[1rem]">
-                        <div className="basis-6/12 pl-[2rem]">
-                            Menu
-                        </div>
-                        <div className="basis-2/12 flex justify-end">
-                            Show
-                        </div>
-
-                        <div className="basis-2/12 flex justify-end">
-                            Active
-                        </div>
-
-                    </div>
-                    {this.temporary_menu.map((value, key) => {
-                        return (
-                            <div className="w-10/12 lg:w-7/12 flex flex-wrap items-center bg-[#3E3E3E] rounded-[10px] my-[1rem] mx-[2rem] py-[1rem] px-[1rem]" key={key}>
-                                <div className="basis-6/12 capitalize pl-[2rem]">
-                                    {value.id}
-                                </div>
-                                <div className="basis-2/12 flex justify-end">
-                                    <div className="my-[0.5rem]">
-                                        <div className="toggle slim colour">
-                                            <input id={value.id + 'show'} className="toggle-checkbox hidden" type="checkbox" defaultChecked={value.isShowed} onChange={e => this.updateShowValue(value.id)} />
-                                            <label htmlFor={value.id + 'show'} className="toggle-label block w-12 h-[14px] rounded-full transition-color duration-150 ease-out"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="basis-2/12 flex justify-end">
-                                    <div className="my-[0.5rem]">
-                                        <div className="toggle slim colour">
-                                            <input id={value.id + 'allow'} className="toggle-checkbox hidden" type="checkbox" defaultChecked={value.isAllowed} onChange={e => this.updateAllowValue(value.id)} />
-                                            <label htmlFor={value.id + 'allow'} className="toggle-label block w-12 h-4 rounded-full transition-color duration-150 ease-out"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="basis-2/12 flex justify-end lg:pr-[2rem] cursor-pointer" onClick={e => this.openSubMenu(value.id)}>
-                                    {value.childs !== undefined ? (
-                                        <div>
-                                            <FontAwesomeIcon icon={faChevronDown} />
-                                        </div>
-                                    ) : null}
-                                </div>
-                                <div className={`basis-full content-end pt-[1rem] pl-[2rem] ${this.state.menuOpen === value.id ? "block" : "hidden"}`}>
-                                    {value.childs !== undefined ? (
-                                        value.childs.map((child, childKey) => {
-                                            return (
-                                                <Submenu child={child} key={childKey} updateShowValue={this.updateShowValue} updateAllowValue={this.updateAllowValue} leftValue={this.state.left} />
-                                            )
-                                        })
-                                    ) : null}
-                                </div>
+                <div className="container mx-auto py-[2rem] flex flex-wrap">
+                    <div className="basis-full lg:basis-6/12 flex flex-wrap order-2 lg:order-1">
+                        <div className="w-full lg:w-11/12 flex flex-wrap  my-[1rem] mx-[2rem] py-[1rem] px-[1rem]">
+                            <div className="basis-6/12 pl-[2rem]">
+                                Menu
                             </div>
-                        )
-                    })}
+                            <div className="basis-2/12 flex justify-end">
+                                Show
+                            </div>
+
+                            <div className="basis-2/12 flex justify-end">
+                                Active
+                            </div>
+                        </div>
+                        {this.temporary_menu.map((value, key) => {
+                            return (
+                                <div className="w-10/12 lg:w-full flex flex-wrap items-center bg-[#3E3E3E] rounded-[10px] my-[1rem] mx-[2rem] py-[1rem] px-[1rem]" key={key}>
+                                    <div className="basis-6/12 capitalize pl-[2rem]">
+                                        {value.id}
+                                    </div>
+                                    <div className="basis-2/12 flex justify-end">
+                                        <div className="my-[0.5rem]">
+                                            <div className="toggle slim colour">
+                                                <input id={value.id + 'show'} className="toggle-checkbox hidden" type="checkbox" defaultChecked={value.isShowed} onChange={e => this.updateShowValue(value.id)} />
+                                                <label htmlFor={value.id + 'show'} className="toggle-label block w-12 h-[14px] rounded-full transition-color duration-150 ease-out"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="basis-2/12 flex justify-end">
+                                        <div className="my-[0.5rem]">
+                                            <div className="toggle slim colour">
+                                                <input id={value.id + 'allow'} className="toggle-checkbox hidden" type="checkbox" defaultChecked={value.isAllowed} onChange={e => this.updateAllowValue(value.id)} />
+                                                <label htmlFor={value.id + 'allow'} className="toggle-label block w-12 h-4 rounded-full transition-color duration-150 ease-out"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="basis-2/12 flex justify-end lg:pr-[2rem] cursor-pointer" onClick={e => this.openSubMenu(value.id)}>
+                                        {value.childs !== undefined ? (
+                                            <div>
+                                                <FontAwesomeIcon icon={faChevronDown} />
+                                            </div>
+                                        ) : null}
+                                    </div>
+                                    <div className={`basis-full content-end pt-[1rem] pl-[2rem] ${this.state.menuOpen === value.id ? "block" : "hidden"}`}>
+                                        {value.childs !== undefined ? (
+                                            value.childs.map((child, childKey) => {
+                                                return (
+                                                    <Submenu child={child} key={childKey} updateShowValue={this.updateShowValue} updateAllowValue={this.updateAllowValue} leftValue={this.state.left} />
+                                                )
+                                            })
+                                        ) : null}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="w-[350px] lg:w-[400px] h-[230px] bg-[#3E3E3E] lg:mt-[6.5rem] px-[2rem] py-[1rem] mx-auto lg:mx-[0px] rounded-[10px] order-1 lg:order-2">
+                        <h3 className="text-[#fff] text-[18px]"><span className=" font-semibold">Apa itu Active dan Show?</span> 💡</h3>
+                        <p className="pt-[1rem] text-[14px] text-justify">
+                            Show adalah keadaan menu muncul di sidebar, sedangkan Hide adalah keadaan menu tidak muncul pada sidebar
+                        </p>
+
+                        <p className="pt-[1rem] text-[14px] text-justify">
+                            Active adalah keadaan menu dapat diklik di sidebar, sedangkan Deactive adalah keadaan menu tidak dapat di klik di sidebar
+                        </p>
+                    </div>
                 </div>
             </div>
         )
