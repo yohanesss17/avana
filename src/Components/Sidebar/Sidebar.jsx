@@ -52,7 +52,7 @@ class Sidebar extends React.Component {
                 <div className="px-[2rem] lg:pl-[2rem] pt-[2rem]">
                     <ul className="w-full sidebar-menu cursor-pointer">
                         {this.props.menu.map((prop, key) => {
-                            if (prop.isShowed == true) {
+                            if (prop.isShowed === true) {
                                 return (
                                     <li
                                         className={`text-white text-[#D5D5D5] capitalize text-[14px] lg:pl-[1rem] mb-[1rem] ${prop.isAllowed === false ? 'cursor-not-allowed' : "cursor-pointer"}`}
@@ -71,7 +71,7 @@ class Sidebar extends React.Component {
                                                 <div className={`pl-[2rem] ${this.state.selectedMenu === prop.id ? 'block' : 'hidden'}`}>
                                                     <ul className=" pl-[1rem] mt-[1rem] mb-[1rem]"  >
                                                         {prop.childs.map((child, childKey) => {
-                                                            if (child.isShowed == true) {
+                                                            if (child.isShowed = true) {
 
                                                                 return (
                                                                     <li className="text-[#515151] text-[14px] pb-[1rem] py-[0.5rem]" key={childKey} >
