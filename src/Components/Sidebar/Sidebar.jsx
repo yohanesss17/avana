@@ -17,6 +17,7 @@ class Sidebar extends React.Component {
         };
     }
 
+    // for  menu
     openMenu = menu => {
         if (this.state.selectedMenu === menu) {
             menu = null;
@@ -26,6 +27,7 @@ class Sidebar extends React.Component {
         });
     }
 
+    // for child menu
     openChildMenu = menu => {
         if (this.state.selectedChildMenu === menu) {
             menu = null;
@@ -47,10 +49,9 @@ class Sidebar extends React.Component {
                         Avriza Bramantyo
                     </h3>
                 </div>
-                <div>
-                </div>
                 <div className="px-[2rem] lg:pl-[2rem] pt-[2rem]">
                     <ul className="w-full sidebar-menu cursor-pointer">
+                        {/* menu loop */}
                         {this.props.menu.map((prop, key) => {
                             if (prop.isShowed === true) {
                                 return (
@@ -59,6 +60,7 @@ class Sidebar extends React.Component {
                                         key={key}
                                     >
                                         {prop.childs !== undefined ? (
+                                            // menu has children
                                             <div >
                                                 <div className={`flex flex-wrap px-[2.2rem] py-[1rem] ${this.state.selectedMenu === prop.id ? "active" : ""}`} onClick={() => prop.isAllowed === true ? this.openMenu(prop.id) : null}>
                                                     <div className="basis-10/12">
@@ -96,6 +98,7 @@ class Sidebar extends React.Component {
                                 return null
                             }
                         })}
+                        {/* end menu loop */}
                     </ul>
                 </div>
             </div >

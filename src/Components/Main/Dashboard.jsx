@@ -16,6 +16,7 @@ class Dashboard extends React.Component {
         }
     }
 
+    //  for hide / show menu
     updateShowValue = (name) => {
         this.temporary_menu.forEach(value => {
             if (value.id === name) {
@@ -42,7 +43,7 @@ class Dashboard extends React.Component {
         return array;
     }
 
-
+    //  for active / deactive menu
     updateAllowValue = (name) => {
         this.temporary_menu.forEach(value => {
             if (value.id === name) {
@@ -68,8 +69,7 @@ class Dashboard extends React.Component {
         return array;
     }
 
-
-
+    // for open / hide menu
     openSubMenu = menu => {
         if (this.state.menuOpen === menu) {
             menu = null;
@@ -80,21 +80,31 @@ class Dashboard extends React.Component {
 
     }
 
-
     render() {
         return (
             <div className="w-full bg-[#2C2C2C] py-[2rem] text-white">
+
+                {/* Title */}
                 <div className="w-full lg:container mx-auto flex flex-wrap px-[2rem] pt-[2rem] ">
+
                     <div className="basis-9/12 lg:basis-10/12 border-b-2 border-[#3E3E3E] pb-[1.5rem]">
                         <h1 className="text-[31px] font-semibold">
                             Setting Menu
                         </h1>
                     </div>
+
+                    {/* Update Menu */}
                     <div className="basis-2/12 border-b-2 border-[#3E3E3E] pb-[1.5rem] flex items-center justify-end">
                         <button className="btn bg-[#FDB817] text-white text-[16px] font-semibold px-[1.5rem] py-[.7rem] rounded-[5px]" onClick={() => this.props.handleTest(this.temporary_menu)}>Save</button>
                     </div>
+                    {/* End Update Menu */}
+
                 </div>
+                {/* End Title */}
+
                 <div className="container mx-auto py-[2rem] flex flex-wrap">
+
+                    {/* Menu Control */}
                     <div className="basis-full lg:basis-6/12 flex flex-wrap order-2 lg:order-1">
                         <div className="w-full lg:w-11/12 flex flex-wrap  my-[1rem] mx-[2rem] py-[1rem] px-[1rem]">
                             <div className="basis-6/12 pl-[2rem]">
@@ -150,6 +160,9 @@ class Dashboard extends React.Component {
                             )
                         })}
                     </div>
+                    {/* End Menu Control */}
+
+                    {/* Feature Information */}
                     <div className="w-[350px] lg:w-[400px] h-[230px] bg-[#3E3E3E] lg:mt-[6.5rem] px-[2rem] py-[1rem] mx-auto lg:mx-[0px] rounded-[10px] order-1 lg:order-2">
                         <h3 className="text-[#fff] text-[18px]"><span className=" font-semibold">Apa itu Active dan Show?</span> 💡</h3>
                         <p className="pt-[1rem] text-[14px] text-justify">
@@ -157,9 +170,11 @@ class Dashboard extends React.Component {
                         </p>
 
                         <p className="pt-[1rem] text-[14px] text-justify">
-                            Active adalah keadaan menu dapat diklik di sidebar, sedangkan Deactive adalah keadaan menu tidak dapat di klik di sidebar
+                            Active adalah keadaan menu dapat diklik di sidebar, sedangkan Deactive adalah keadaan menu tidak dapat di klik di sidebar 🚫
                         </p>
                     </div>
+                    {/* End Feature Information */}
+
                 </div>
             </div>
         )
