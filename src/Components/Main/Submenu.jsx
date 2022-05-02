@@ -2,11 +2,6 @@ import React from "react";
 import Submenu from './Submenu.jsx'
 
 class Menu extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         let key = this.props.child.id.toString() + '-' + this.props.childKey;
         return (

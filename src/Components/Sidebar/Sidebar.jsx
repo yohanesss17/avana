@@ -71,13 +71,14 @@ class Sidebar extends React.Component {
                                                 <div className={`pl-[2rem] ${this.state.selectedMenu === prop.id ? 'block' : 'hidden'}`}>
                                                     <ul className=" pl-[1rem] mt-[1rem] mb-[1rem]"  >
                                                         {prop.childs.map((child, childKey) => {
-                                                            if (child.isShowed = true) {
-
+                                                            if (child.isShowed === true) {
                                                                 return (
                                                                     <li className="text-[#515151] text-[14px] pb-[1rem] py-[0.5rem]" key={childKey} >
                                                                         <Menu menu={child} openChildMenu={this.openChildMenu} selectedChildMenu={this.state.selectedChildMenu} />
                                                                     </li>
                                                                 )
+                                                            } else {
+                                                                return null
                                                             }
                                                         })
                                                         }
@@ -91,6 +92,8 @@ class Sidebar extends React.Component {
                                         )}
                                     </li>
                                 );
+                            } else {
+                                return null
                             }
                         })}
                     </ul>
