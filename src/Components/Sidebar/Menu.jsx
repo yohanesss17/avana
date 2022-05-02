@@ -32,7 +32,7 @@ class Menu extends React.Component {
             )
         } else {
             return (
-                <div className={`py-[0.5rem] text-[#515151] border-b-[1px] border-[#515151] ${this.props.menu.isAllowed === false ? 'cursor-not-allowed' : "cursor-pointer"} ${this.props.selectedChildMenu === this.props.menu.id ? "active" : "" }`} onClick={() => this.props.menu.isAllowed === true ? this.openMenu(this.props.menu.id) : null}>
+                <div className={`py-[0.5rem] text-[#515151] border-b-[1px] border-[#515151] ${this.props.menu.isAllowed === false ? 'cursor-not-allowed' : "cursor-pointer"} ${this.props.selectedChildMenu === this.props.menu.id ? "active" : "" }`} onClick={() => this.props.menu.isAllowed === true ? this.props.openChildMenu(this.props.menu.id) : null}>
                     {this.props.menu.id}
                 </div>
             )
